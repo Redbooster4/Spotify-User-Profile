@@ -60,7 +60,7 @@ Components used are:
 - CardNav Component
 
 ![React Bit Component](./screenshots/ReactBits.png)
-For the complete animated gif head to my LinkedIn post.
+For the complete animated gif head to my LinkedIn post here https://www.linkedin.com/posts/neev-panchal-b51431313_github-redbooster4spotify-user-profile-activity-7407104952105517056-LLXD?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE-eoC0By0cQrb1NRWSXUt_jxDVfSQsdLwM
 
 ## How It Works (Simple Explanation)
 
