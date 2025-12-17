@@ -7,10 +7,10 @@ I built this project while learning how APIs actually work in practice — espec
 ## Screenshots
 
 ### Login Page
-![Login Page](./screenshots/Login.gif)
+![Login Page](./screenshots/Home.png)
 
 ### Profile Page
-![Profile Page](./screenshots/Profile.gif)
+![Profile Page](./screenshots/Profile.png)
 
 
 
@@ -57,7 +57,7 @@ Components used are:
 - Aurora Background
 - CardNav Component
 
-![React Bit Component](./screenshots/ReactBits.gif)
+![React Bit Component](./screenshots/ReactBits.png)
 
 ## How It Works (Simple Explanation)
 
