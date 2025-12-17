@@ -51,13 +51,14 @@ I kept the frontend and backend separate to make the flow easier to understand a
 
 I’d like to give a huge shoutout to **React Bits** for their excellent collection of React components and backgrounds.
 
-As a complete beginner, these resources made it much easier to build a clean UI and stay focused on learning how APIs and full-stack applications work.
+As a complete beginner, these resources made it much easier to build a clean UI and stay focused on learning how APIs and full-stack applications work. You can view the same here https://reactbits.dev/.
 
 Components used are: 
 - Aurora Background
 - CardNav Component
 
 ![React Bit Component](./screenshots/ReactBits.png)
+For the complete animated gif head to my LinkedIn post.
 
 ## How It Works (Simple Explanation)
 
