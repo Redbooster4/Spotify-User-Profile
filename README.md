@@ -4,6 +4,8 @@ This is a simple full-stack web application that lets users log in with their Sp
 
 I built this project while learning how APIs actually work in practice — especially OAuth authentication, handling access tokens on the backend, and sending data to a React frontend.
 
+Made with the learnings from https://youtu.be/WXsD0ZgxjRw?si=1LAwbSJKHiWZq-Dv this Youtube Course.
+
 ## Screenshots
 
 ### Login Page
