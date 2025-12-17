@@ -1,0 +1,58 @@
+.artist-card {
+  position: relative;
+  width: 100%;
+  scale: 0.7;
+  margin: 0 auto;
+  padding: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: radial-gradient(
+    circle at top,
+    rgba(59, 130, 246, 0.15),
+    rgba(0, 0, 0, 0.95)
+  );
+
+  border-radius: 28px;
+  overflow: hidden;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Optional subtle glow */
+.artist-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(
+    145deg,
+    rgba(59, 130, 246, 0.5),
+    transparent 60%
+  );
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Responsive behavior */
+@media (max-width: 1024px) {
+  .artist-card {
+    height: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .artist-card {
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .artist-card {
+    padding: 12px;
+    border-radius: 16px;
+  }
+}

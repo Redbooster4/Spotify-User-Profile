@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" src="styles.css">
+    <title>Spotify-Profile</title>
+  </head>
+  <body>
+  <div id="loader">
+    <img src="./src/FireLogo.gif" alt="Loading..." />
+  </div>
+
+  <div id="root"></div>
+
+  <script type="module" src="/src/main.jsx"></script>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const loader = document.getElementById("loader");
+      if (loader) loader.style.display = "none";
+    });
+  </script>
+</body>
+</html>

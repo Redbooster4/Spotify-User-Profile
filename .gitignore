@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Python virtual env (backend)
+venv/
+
+# OS / editor junk
+.DS_Store
+.vscode/
