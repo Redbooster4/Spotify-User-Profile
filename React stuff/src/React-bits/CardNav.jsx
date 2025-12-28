@@ -12,6 +12,9 @@ const CardNav = ({
   ease = 'power3.out',
   baseColor = '#fff',
   menuColor,
+  buttonBgColor,
+  buttonTextColor,
+  handleLogout,
 }) => {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -150,6 +153,14 @@ const CardNav = ({
           <div className="logo-container">
             <img src={logo} alt={logoAlt} className="logo" />
           </div>
+
+          <button
+            className="card-nav-cta-button"
+            style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
         </div>
 
         <div className="card-nav-content" aria-hidden={!isExpanded}>
