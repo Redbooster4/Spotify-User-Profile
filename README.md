@@ -35,6 +35,7 @@ I kept the frontend and backend separate to make the flow easier to understand a
 - Fetches user profile data from Spotify
 - Sends the data to the frontend
 - Displays the profile information in the UI
+- Along with the short comments on the user's profile via Gemini
 
 
 ## Tech Used
@@ -72,6 +73,7 @@ For the complete animated gif head to my LinkedIn post here https://www.linkedin
 6. The backend uses the token to fetch profile data
 7. The frontend requests this data from the backend
 8. The user’s profile is displayed on the screen
+9. Upon clicking on the Roast Me button the user is displayed with short text ~ 4 paragraphs commenting on the user's music taste
 
 
 ## Getting Started (For Beginners)
@@ -107,7 +109,7 @@ cd Spotify-User-Profile
 3. Copy your **Client ID** and **Client Secret**
 4. Add this **Redirect URI**:
    ```
-   http://localhost:5000/callback
+   http://localhost:8888/callback
    ```
 
 
@@ -123,7 +125,7 @@ Create a `.env` file inside the `Backend` folder:
 ```env
 SPOTIFY_CLIENT_ID=your_client_id
 SPOTIFY_CLIENT_SECRET=your_client_secret
-SPOTIFY_REDIRECT_URI=http://localhost:5000/callback
+SPOTIFY_REDIRECT_URI=http://localhost:8888/callback
 ```
 
 Start the backend:
@@ -157,14 +159,14 @@ http://127.0.0.1:5173
 2. Click **Login with Spotify**
 3. Approve access
 4. View your Spotify profile information
-
+5. Click **Roast Me**
+6. View your comments
 
 
 ## Planned Improvements
 
 - AI-based music taste roasting using Gemini API
-- Showing top artists and tracks
-- Better UI and styling
+- Showing top tracks
 - Improved error handling
 
 
