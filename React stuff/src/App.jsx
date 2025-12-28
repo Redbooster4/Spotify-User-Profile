@@ -1,10 +1,9 @@
-import SpotifyProfile from "./SpotifyProfile.jsx";
-import ArtistCard from "./Components/ArtistCard.jsx";
+import Cooked from "./Cooked.jsx";
 
 function App() {
   return (
     <div>
-      <SpotifyProfile/>
+      <Cooked/>
     </div>
   );
 }

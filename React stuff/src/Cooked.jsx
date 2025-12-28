@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Aurora from './React-bits/Aurora.jsx';
 import ArtistCard from './Components/ArtistCard.jsx';
 import CardNav from './React-bits/CardNav.jsx';
@@ -8,14 +7,14 @@ import logo from './FireLogo.gif';
 function SpotifyProfile() {
     const [profile, setProfile] = useState(null);
     const [topArtists, setTopArtists] = useState([]);
+    const [roast, setRoast] = useState("");
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8888/profile", {
+        fetch("/profile", {
             credentials: "include"
         })
             .then(res => res.json())
             .then(data => {
-                console.log("PROFILE RESPONSE:", data);
                 if (!data.error) {
                     setProfile(data);
                 }
@@ -25,33 +24,47 @@ function SpotifyProfile() {
 
     useEffect(() => {
         if (!profile) return;
-
-        fetch("http://127.0.0.1:8888/top-artists", {
+        fetch("/top-artists", {
             credentials: "include"
         })
             .then(res => res.json())
             .then(data => {
-                console.log("RAW DATA:", data);
-                console.log("HAS ITEMS:", Array.isArray(data.items));
-                console.log("ITEMS LENGTH:", data.items?.length);
-
                 if (!data.error) {
-                    setTopArtists(data.items ?? data);
+                    setTopArtists(data.items);
                 }
             })
             .catch(err => console.error("TOP ARTISTS ERROR:", err));
     }, [profile]);
 
+    const getRoast = async () => {
+        if (!profile) return;
+        if (!topArtists) return;
+        //Initial text just after the Roast Me Button
+        setRoast("Cooking up your Roast.... (might take a few seconds)");
+        await fetch("/roast", {
+            method: "POST",
+            credentials: "include"
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (!data.error) setRoast(data.roast);
+            })
+            .catch(err => {
+                console.error("ROAST ERROR: ", err)
+            });
+    }
+
+    const onLogout = async () => {
+        await fetch("/logout", {
+            method: "POST",
+            credentials: "include"
+        })
+        setProfile(null);
+        setTopArtists([]);
+        setRoast("");
+    }
+    //CardNav elements
     const items = [
-        {
-            label: "About",
-            bgColor: "#0B1020",
-            textColor: "#E5E7EB",
-            links: [
-                { label: "Company", ariaLabel: "About Company" },
-                { label: "Careers", ariaLabel: "About Careers" }
-            ]
-        },
         {
             label: "Projects",
             bgColor: "#0F172A",
@@ -66,9 +79,9 @@ function SpotifyProfile() {
             bgColor: "#020617",
             textColor: "#E5E7EB",
             links: [
-                { label: "Email", ariaLabel: "Email us" },
-                { label: "Twitter", ariaLabel: "Twitter" },
-                { label: "LinkedIn", ariaLabel: "LinkedIn" }
+                { label: "Email", ariaLabel: "Email us", href: "mailto:neev.p4@gmail.com" },
+                { label: "GitHub", ariaLabel: "GitHub", href: "https://github.com/Redbooster4" },
+                { label: "LinkedIn", ariaLabel: "LinkedIn", href: "https://www.linkedin.com/in/neev-panchal-b51431313/" }
             ]
         }
     ];
@@ -83,30 +96,30 @@ function SpotifyProfile() {
                     speed={0.5}
                 />
             </div>
-
             <CardNav
                 logo={logo}
-                logoAlt="Fire"
+                logoAlt="Cooked"
                 items={items}
                 baseColor="#020617"
                 menuColor="#ffffffff"
                 buttonBgColor="#1E293B"
                 buttonTextColor="#CBD5F5"
                 ease="power3.out"
+                handleLogout={onLogout}
             />
-
-            <div className="SpotifyProfile">
+            <div className="Cooked">
                 {!profile && (
-                    <h1>Spotify Profile</h1>
+                    <h1>Cooked</h1>
                 )}
                 {!profile && (
                     <button
-                        className="add-btn"
+                        className="btn"
                         onClick={() => {
                             window.location.href = "http://127.0.0.1:8888/login";
                         }}>
                         Login To Your Spotify Account
                     </button>
+
                 )}
                 {profile && (
                     <>
@@ -128,9 +141,12 @@ function SpotifyProfile() {
                         <p>
                             <strong>Email:</strong> {profile.email}
                         </p>
-                        <div>
-                            <ArtistCard artists={topArtists} />
-                        </div>
+
+                        <ArtistCard artists={topArtists} />
+
+                        <button onClick={getRoast} className='btn'>Roast Me</button>
+
+                        <textarea rows={25} cols={100} value={roast}></textarea>
                     </>
                 )}
             </div>

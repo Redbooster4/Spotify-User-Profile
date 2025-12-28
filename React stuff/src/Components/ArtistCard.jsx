@@ -14,14 +14,13 @@ export default function ArtistCard({ artists }) {
         }));
 
     return (
-        <div className='artist-card'>
-            <ChromaGrid
-                items={top5artists}
-                radius={999}
-                damping={0.45}
-                fadeOut={0.5}
-                ease="power3.out"
-            />
-        </div>
+        <ChromaGrid
+            items={top5artists}
+            radius={300}
+            damping={0.2}
+            fadeOut={0.6}
+            ease="power3.out"
+            className='artist-card'
+        />
     );
 }
