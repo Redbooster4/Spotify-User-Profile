@@ -7,17 +7,19 @@ const { GoogleGenAI } = require("@google/genai");
 
 require("dotenv").config();
 var app = express();
+const isProd = process.env.NODE_ENV === "production";
 
-app.use(cors({ origin: "http://127.0.0.1:5173", credentials: true }));
+app.use(express.json());
+app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
 
 app.use(session({
-  secret: "spotify-secret",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: false,
+    secure: isProd,
     httpOnly: true,
-    sameSite: "lax"
+    sameSite: isProd?"none":"lax",
   }
 }));
 
@@ -26,6 +28,8 @@ var client_secret = process.env.CLIENT_SECRET;
 var redirect_uri = process.env.REDIRECT_URI;
 
 const ai = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
+
+const PORT = process.env.PORT || 8888;
 
 //helper func
 function generateRandomString(length) {
@@ -97,7 +101,7 @@ app.get('/callback', async (req, res) => {
       const topArtistRes = await fetchArtists(access_token);
       //console.log("Artists: ", JSON.stringify(topArtistRes, null, 2));
       req.session.artists = topArtistRes;
-      res.redirect('http://127.0.0.1:5173?loggedIn=true');
+      res.redirect(`${process.env.FRONTEND_URL}?loggedIn=true`);
     }
   } catch (error) {
     console.error("Spotify Error:" + error);
@@ -173,6 +177,6 @@ app.post('/logout', async(req, res) => {
   });
 });
 
-app.listen(8888, () => {
-  console.log("Server running in port: 8888");
+app.listen(PORT, () => {
+  console.log("Server running in port: "+PORT);
 });

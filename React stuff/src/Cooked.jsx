@@ -4,13 +4,15 @@ import ArtistCard from './Components/ArtistCard.jsx';
 import CardNav from './React-bits/CardNav.jsx';
 import logo from './FireLogo.gif';
 
+const URL = import.meta.env.VITE_BACKEND_URL;
+
 function SpotifyProfile() {
     const [profile, setProfile] = useState(null);
     const [topArtists, setTopArtists] = useState([]);
     const [roast, setRoast] = useState("");
 
     useEffect(() => {
-        fetch("/profile", {
+        fetch(`${URL}/profile`, {
             credentials: "include"
         })
             .then(res => res.json())
@@ -24,7 +26,7 @@ function SpotifyProfile() {
 
     useEffect(() => {
         if (!profile) return;
-        fetch("/top-artists", {
+        fetch(`${URL}/top-artists`, {
             credentials: "include"
         })
             .then(res => res.json())
@@ -41,7 +43,7 @@ function SpotifyProfile() {
         if (!topArtists) return;
         //Initial text just after the Roast Me Button
         setRoast("Cooking up your Roast.... (might take a few seconds)");
-        await fetch("/roast", {
+        await fetch(`${URL}/roast`, {
             method: "POST",
             credentials: "include"
         })
@@ -55,7 +57,7 @@ function SpotifyProfile() {
     }
 
     const onLogout = async () => {
-        await fetch("/logout", {
+        await fetch(`${URL}/logout`, {
             method: "POST",
             credentials: "include"
         })
@@ -115,7 +117,7 @@ function SpotifyProfile() {
                     <button
                         className="btn"
                         onClick={() => {
-                            window.location.href = "http://127.0.0.1:8888/login";
+                            window.location.href = `${URL}/login`;
                         }}>
                         Login To Your Spotify Account
                     </button>
