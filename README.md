@@ -123,9 +123,15 @@ npm configure
 Create a `.env` file inside the `Backend` folder:
 
 ```env
-SPOTIFY_CLIENT_ID=your_client_id
-SPOTIFY_CLIENT_SECRET=your_client_secret
-SPOTIFY_REDIRECT_URI=http://localhost:8888/callback
+# Spotify App Credentials
+CLIENT_ID=your_spotify_client_id_here
+CLIENT_SECRET=your_spotify_client_secret_here
+
+# Spotify Redirect URI (must match exactly what you set in Spotify Dashboard)
+REDIRECT_URI=http://127.0.0.1:8888/callback
+
+# Google Gemini API Key
+GOOGLE_API_KEY=your_google_gemini_api_key_here
 ```
 
 Start the backend:
