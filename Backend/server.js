@@ -9,6 +9,8 @@ require("dotenv").config();
 var app = express();
 const isProd = process.env.NODE_ENV === "production";
 
+if (isProd) app.set("trust proxy", 1);
+
 app.use(express.json());
 app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
 
@@ -20,6 +22,7 @@ app.use(session({
     secure: isProd,
     httpOnly: true,
     sameSite: isProd?"none":"lax",
+    maxAge: 24 * 60 * 60 * 1000
   }
 }));
 
