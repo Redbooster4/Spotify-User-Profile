@@ -6,6 +6,9 @@ I built this project while learning how APIs actually work in practice — espec
 
 Made with the learnings from https://youtu.be/WXsD0ZgxjRw?si=1LAwbSJKHiWZq-Dv this Youtube Course.
 
+You can try the website in here - https://lnkd.in/dFWWYpC4
+(Although the Token authentication would fail as my Spotify App is currently in its Development Mode and not in its Extended Quota Mode, thus not allowing all user's are allowed to log in)
+
 ## Screenshots
 
 ### Login Page
