@@ -183,3 +183,5 @@ app.post('/logout', async(req, res) => {
 app.listen(PORT, () => {
   console.log("Server running in port: "+PORT);
 });
+
+// Made the port dynamic
